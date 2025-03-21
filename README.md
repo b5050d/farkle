@@ -18,8 +18,6 @@ Action space
 - Score and Roll again
 
 
-
-
 Alright what about a standard game of farkle?
 So you roll six dice and you can score 3x of them
 

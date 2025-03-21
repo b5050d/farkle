@@ -5,18 +5,18 @@ def dice_roll():
     """
     Return an integer representing the value of a dice roll
     """
-    return np.random.randint(1,7)
+    return np.random.randint(1, 7)
 
-class Dice():
+
+class Dice:
     def __init__(self):
         self.value = dice_roll()
 
     def roll(self):
         self.value = dice_roll()
         return self.value
-# Just start with one turn
 
-class Turn():
+class Turn:
     def __init__(self):
         # self.active_dice = 6
         self.active_dice = []
@@ -35,7 +35,6 @@ class Turn():
 
     def process_turn(self):
         while not self.bust and not self.end:
-
             if len(self.active_dice) == 0:
                 print("")
                 print("You used all the dice! You get 6 fresh ones")
@@ -46,7 +45,8 @@ class Turn():
             # if there are 0 dice left, then roll 6 again!
             a.roll()
             indexes = self.ask_which_to_score()
-            if indexes == None: break
+            if indexes == None:
+                break
             score = self.calculate_score(indexes)
 
             # print("Indexes: {}".format(indexes))
@@ -54,7 +54,7 @@ class Turn():
             for index in indexes[::-1]:
                 del self.active_dice[index]
 
-            roll_again= input(f"Roll again with {len(self.active_dice)}?(y/n)")
+            roll_again = input(f"Roll again with {len(self.active_dice)}?(y/n)")
             if roll_again == "y":
                 pass
             else:
@@ -64,25 +64,22 @@ class Turn():
 
     def ask_which_to_score(self):
         while True:
-
             to_score = input("Enter which dice to score:")
             if to_score == "":
                 self.act_bust()
                 return None
             break
 
-        
         if to_score == "":
             print("User did not enter any dice to score, ending turn!")
             self.end = True
             return
-        #parse toscore
+        # parse toscore
         dice_indexes_to_score = [int(i) for i in to_score.split(",")]
 
         if 7 in dice_indexes_to_score:
             self.end = True
             dice_indexes_to_score.remove(7)
-    
 
         return dice_indexes_to_score
 
@@ -98,9 +95,9 @@ class Turn():
         """
         values = []
         for didx in to_score:
-            assert didx in [0,1,2,3,4,5]
+            assert didx in [0, 1, 2, 3, 4, 5]
 
-            #get the value
+            # get the value
             value = self.active_dice[didx].value
             values.append(value)
 
@@ -121,14 +118,12 @@ class Turn():
         if score == 0:
             self.bust = True
 
-
         print(f"Scored: {score}")
-        self.score+=score
+        self.score += score
         print("Turn score now: {}".format(self.score))
+
 
 
 if __name__ == "__main__":
     a = Turn()
     a.process_turn()
-
-

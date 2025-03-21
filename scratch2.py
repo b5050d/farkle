@@ -1,9 +1,5 @@
+from farkle.game import Game
 
-
-from farkle.dice import Dice
-
-from farkle.turn import Turn
-
-
-a = Turn()
-print(a)
+if __name__ == "__main__":
+    a = Game()
+    a.main_loop()

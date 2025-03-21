@@ -18,14 +18,13 @@ class Turn:
         """
         Set up the class
         """
+        self.score = 0
+        self.bust = False
+        self.end = False
+        
         self.active_dice = []
         for i in range(6):
             self.active_dice.append(Dice())
-
-        self.score = 0
-
-        self.bust = False
-        self.end = False
 
     def __repr__(self):
         """

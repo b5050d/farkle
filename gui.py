@@ -10,6 +10,7 @@ import tkinter as tk
 def hi():
     print("hi")
 
+
 app = tk.Tk()
 
 

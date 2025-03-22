@@ -7,6 +7,7 @@ Turn for the dice
 """
 
 from farkle.dice import Dice
+from farkle.score import calculate_score
 
 
 class Turn:
@@ -21,7 +22,7 @@ class Turn:
         self.score = 0
         self.bust = False
         self.end = False
-        
+
         self.active_dice = []
         for i in range(6):
             self.active_dice.append(Dice())
@@ -35,7 +36,7 @@ class Turn:
         answer += f"Current Score: {self.score}\n"
         answer += f"Active Dice: {len(self.active_dice)}\n"
         return answer
-    
+
     def _roll(self):
         """
         Roll all of the active dice
@@ -92,7 +93,7 @@ class Turn:
         values = sorted(values)
 
         print("Selected Values: {}".format(values))
-        score = int(input("Whats the score?:"))
+        score = calculate_score(values)
         if score == 0:
             self.bust = True
 
@@ -115,9 +116,9 @@ class Turn:
             # if there are 0 dice left, then roll 6 again!
             self._roll()
             indexes = self.ask_which_to_score()
-            if indexes == None:
+            if indexes is None:
                 break
-            score = self.calculate_score(indexes)
+            self.calculate_score(indexes)
 
             # Remove the dice that were scored
             for index in indexes[::-1]:
@@ -130,4 +131,3 @@ class Turn:
                 self.end = True
         if self.end:
             print(f"Ended turn with score: {self.score}")
-

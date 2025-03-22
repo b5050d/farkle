@@ -7,12 +7,10 @@ Written by b5050d
 import os
 import sys
 
-sys.path.insert(
-    0,
-    os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-)
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from farkle.turn import Turn
+
 
 def test_turn_init():
     """
@@ -22,8 +20,8 @@ def test_turn_init():
 
     assert a.score == 0
     assert len(a.active_dice) == 6
-    assert a.bust == False
-    assert a.end == False
+    assert a.bust is False
+    assert a.end is False
 
 
 def test_turn_enact_bust():

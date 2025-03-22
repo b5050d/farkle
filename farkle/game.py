@@ -6,9 +6,9 @@ Written by b5050d
 
 from farkle.turn import Turn
 
-class Game:
 
-    def __init__(self, winning_score = 2000):
+class Game:
+    def __init__(self, winning_score=2000):
         """
         Set up the class
         """
@@ -30,17 +30,17 @@ class Game:
             turn.main_loop()
 
             self.scores[player_index] += turn.score
-            turn = None # Clear the turn
+            turn = None  # Clear the turn
 
             print("End of Turn")
             print(f"Player 0 score: {self.scores[0]}")
             print(f"Player 1 score: {self.scores[1]}")
             print("")
 
-            if player_index == 0: player_index = 1
-            else: player_index = 0
+            if player_index == 0:
+                player_index = 1
+            else:
+                player_index = 0
 
         print("Game has ended!")
         print(f"Player {player_index} has won! {self.scores[player_index]} points")
-
-

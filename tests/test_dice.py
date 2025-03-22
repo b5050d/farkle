@@ -7,10 +7,7 @@ Written by b5050d
 import os
 import sys
 
-sys.path.insert(
-    0,
-    os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-)
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from farkle.dice import dice_roll, Dice
 
@@ -39,4 +36,3 @@ def test_dice_class():
     assert a.value > 0
     assert a.value < 7
     assert type(a.value) is int
-    
